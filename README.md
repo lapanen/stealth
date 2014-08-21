@@ -1,8 +1,2 @@
 stealth
 =======
-
-Pah.
-
-Höh.
-
-Hmmmm.
