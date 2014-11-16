@@ -1,0 +1,1 @@
+To play around with ASCIIDoc, you need a file, right?
