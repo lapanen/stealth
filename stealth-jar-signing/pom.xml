@@ -10,11 +10,25 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>stealth-jar-signing</artifactId>
+
   <dependencies>
     <dependency>
       <groupId>org.lapanen</groupId>
-      <artifactId>stealth</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <artifactId>stealth-maven</artifactId>
+      <version>${stealth.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.lapanen</groupId>
+      <artifactId>stealth-core</artifactId>
+      <version>${stealth.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
   </dependencies>
 

@@ -1,1 +1,8 @@
 # Created by .gitignore support plugin (hsz.mobi)
+stealth-core/stealth-core.iml
+atlassian-ide-plugin.xml
+.idea
+stealth-jar-signing/stealth-jar-signing.iml
+stealth-si-process/stealth-si-process.iml
+stealth-maven/stealth-maven.iml
+stealth.iml
