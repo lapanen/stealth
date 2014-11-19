@@ -27,7 +27,7 @@ public abstract class AbstractLastModifiedSigningStrategy extends AbstractSignin
 
     @Override
     protected boolean doShouldSign(final Artifact artifact) {
-        return isUpToDate(artifact);
+        return !isUpToDate(artifact);
     }
 
     public void setTimeDiscrepancyInMillis(final long timeDiscrepancyInMillis) {
