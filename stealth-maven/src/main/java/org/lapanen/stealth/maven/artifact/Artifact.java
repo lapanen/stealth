@@ -1,20 +1,21 @@
 package org.lapanen.stealth.maven.artifact;
 
 import java.io.Serializable;
+import java.util.List;
 
 public interface Artifact extends Serializable {
-    java.lang.String DEFAULT_PACKAGING = "jar";
-    java.lang.String PARENT_PACKAGING = "pom";
+    String DEFAULT_PACKAGING = "jar";
+    String PARENT_PACKAGING = "pom";
 
-    java.util.List<Artifact> getParents();
+    List<Artifact> getParents();
 
-    java.util.List<Dependency> getDependencies();
+    List<Dependency> getDependencies();
 
-    java.lang.String getGroupId();
+    String getGroupId();
 
-    java.lang.String getArtifactId();
+    String getArtifactId();
 
-    java.lang.String getVersion();
+    String getVersion();
 
-    java.lang.String getPackaging();
+    String getPackaging();
 }
