@@ -1,6 +1,5 @@
 package org.lapanen.stealth.signing.strategy;
 
-
 import org.lapanen.stealth.maven.artifact.Artifact;
 
 import com.google.common.base.Preconditions;

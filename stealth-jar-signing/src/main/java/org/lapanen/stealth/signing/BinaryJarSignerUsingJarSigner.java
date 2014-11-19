@@ -2,7 +2,6 @@ package org.lapanen.stealth.signing;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
@@ -78,7 +77,7 @@ public class BinaryJarSignerUsingJarSigner implements JarSigner {
         if (targetParentDirectory == null || !targetParentDirectory.exists()) {
             LOG.debug("Target file's {} parent {} does not exist, creating", target, targetParentDirectory);
             if (!targetParentDirectory.mkdirs()) {
-                throw new SigningException(String.format("Creating directory '%s' failed", targetParentDirectory ));
+                throw new SigningException(String.format("Creating directory '%s' failed", targetParentDirectory));
             }
         }
         runJarSigner(sourcePath, fileSystemTargetPath);

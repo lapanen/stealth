@@ -1,13 +1,13 @@
 package org.lapanen.stealth;
 
-public class StealthException extends java.lang.RuntimeException {
+public class StealthException extends RuntimeException {
     private static final long serialVersionUID = 8124434878737950740L;
 
     public StealthException() {
         super();
     }
 
-    public StealthException(java.lang.String message) {
+    public StealthException(String message) {
         super(message);
     }
 
@@ -15,7 +15,7 @@ public class StealthException extends java.lang.RuntimeException {
         super(cause);
     }
 
-    public StealthException(String message, java.lang.Throwable cause) {
+    public StealthException(String message, Throwable cause) {
         super(message, cause);
     }
 }

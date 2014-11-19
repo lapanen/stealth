@@ -3,7 +3,7 @@ package org.lapanen.stealth.signing;
 public class SigningException extends RuntimeException {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 4228180946838246757L;
 

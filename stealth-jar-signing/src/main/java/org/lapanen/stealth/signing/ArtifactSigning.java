@@ -1,6 +1,5 @@
 package org.lapanen.stealth.signing;
 
-
 import java.security.cert.Certificate;
 
 import org.joda.time.ReadableInstant;

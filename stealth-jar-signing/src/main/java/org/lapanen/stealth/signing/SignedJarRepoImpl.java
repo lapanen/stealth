@@ -37,7 +37,8 @@ public class SignedJarRepoImpl implements SignedJarRepo {
 
     private final RestOperations rest;
 
-    public SignedJarRepoImpl(final JarSigner signer, final PathBuilder targetPathBuilder, final UrlBuilder sourceUrlBuilder, final RestOperations restTemplate) {
+    public SignedJarRepoImpl(final JarSigner signer, final PathBuilder targetPathBuilder, final UrlBuilder sourceUrlBuilder,
+            final RestOperations restTemplate) {
         this.signer = signer;
         this.targetPathBuilder = targetPathBuilder;
         this.sourceUrlBuilder = sourceUrlBuilder;
@@ -80,8 +81,9 @@ public class SignedJarRepoImpl implements SignedJarRepo {
 
     @Override
     public Optional<ArtifactSigning> findLastSigningFor(final Artifact artifact) {
-        final List<MongoDbArtifactSigning> signings = signingRepository.findByGroupIdAndArtifactIdAndVersion(artifact.getGroupId(), artifact.getArtifactId(),
-                artifact.getVersion(), new Sort(Sort.Direction.DESC, "signingTime"));
+        final List<MongoDbArtifactSigning> signings = signingRepository
+                .findByGroupIdAndArtifactIdAndVersion(artifact.getGroupId(), artifact.getArtifactId(), artifact.getVersion(),
+                        new Sort(Sort.Direction.DESC, "signingTime"));
         if (!signings.isEmpty()) {
             return Optional.of(signings.get(0).getArtifactSigning());
         }

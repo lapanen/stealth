@@ -7,7 +7,7 @@ import java.util.List;
 public class ArtifactDTO implements Artifact {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 3069478929687107508L;
 
@@ -86,33 +86,44 @@ public class ArtifactDTO implements Artifact {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final ArtifactDTO other = (ArtifactDTO) obj;
         if (artifactId == null) {
-            if (other.artifactId != null)
+            if (other.artifactId != null) {
                 return false;
-        } else if (!artifactId.equals(other.artifactId))
+            }
+        } else if (!artifactId.equals(other.artifactId)) {
             return false;
+        }
         if (groupId == null) {
-            if (other.groupId != null)
+            if (other.groupId != null) {
                 return false;
-        } else if (!groupId.equals(other.groupId))
+            }
+        } else if (!groupId.equals(other.groupId)) {
             return false;
+        }
         if (packaging == null) {
-            if (other.packaging != null)
+            if (other.packaging != null) {
                 return false;
-        } else if (!packaging.equals(other.packaging))
+            }
+        } else if (!packaging.equals(other.packaging)) {
             return false;
+        }
         if (version == null) {
-            if (other.version != null)
+            if (other.version != null) {
                 return false;
-        } else if (!version.equals(other.version))
+            }
+        } else if (!version.equals(other.version)) {
             return false;
+        }
         return true;
     }
 
