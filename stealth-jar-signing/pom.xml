@@ -14,11 +14,6 @@
   <dependencies>
     <dependency>
       <groupId>org.lapanen</groupId>
-      <artifactId>stealth-maven</artifactId>
-      <version>${stealth.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.lapanen</groupId>
       <artifactId>stealth-core</artifactId>
       <version>${stealth.version}</version>
     </dependency>

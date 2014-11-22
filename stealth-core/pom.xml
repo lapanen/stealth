@@ -18,5 +18,12 @@
     </dependency>
   </dependencies>
 
+  <distributionManagement>
+    <site>
+      <url>http://lapanen.org</url>
+    </site>
+  </distributionManagement>
+
+
 
 </project>

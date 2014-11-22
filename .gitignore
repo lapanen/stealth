@@ -9,3 +9,5 @@ stealth.iml
 stealth-maven-skin/stealth-maven-skin.iml
 stealth-maven-skin
 src/site/site.xml
+stealth-maven-skin/src
+stealth-maven-skin/pom.xml

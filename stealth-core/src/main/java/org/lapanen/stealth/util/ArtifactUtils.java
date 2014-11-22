@@ -1,4 +1,4 @@
-package org.lapanen.stealth.maven.artifact.util;
+package org.lapanen.stealth.util;
 
 import org.lapanen.stealth.maven.artifact.Artifact;
 import org.lapanen.stealth.maven.artifact.ArtifactDTO;

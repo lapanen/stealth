@@ -10,13 +10,42 @@
   <packaging>pom</packaging>
   <modules>
     <module>stealth-jar-signing</module>
-    <module>stealth-maven</module>
     <module>stealth-maven-skin</module>
     <module>stealth-core</module>
     <module>stealth-si-process</module>
   </modules>
 
+  <url>http://stealth.lapanen.org/${artifactId}</url>
+
+  <licenses>
+    <license>
+      <name>Apache License Version 2.0, January 2004</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>Lapanen.org</name>
+    <url>http://lapanen.org</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>lapanen</id>
+      <email>lapanen@lapanen.org</email>
+      <name>Lapanen</name>
+      <roles>
+        <role>Lapanen</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <scm>
+    <url>https://github.com/lapanen/stealth</url>
+  </scm>
+
   <properties>
+
     <stealth.version>${project.version}</stealth.version>
     <stealth-maven-skin.version>0.1-SNAPSHOT</stealth-maven-skin.version>
 
