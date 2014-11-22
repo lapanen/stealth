@@ -4,10 +4,10 @@ atlassian-ide-plugin.xml
 .idea
 stealth-jar-signing/stealth-jar-signing.iml
 stealth-si-process/stealth-si-process.iml
-stealth-maven/stealth-maven.iml
 stealth.iml
 stealth-maven-skin/stealth-maven-skin.iml
 stealth-maven-skin
 src/site/site.xml
 stealth-maven-skin/src
 stealth-maven-skin/pom.xml
+stealth-si-subversion/stealth-si-subversion.iml
