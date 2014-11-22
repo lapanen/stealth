@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,10 +44,9 @@ public class SubversionComponents {
 
     @Splitter(inputChannel = "subversionLogChannel", outputChannel = "subversionBasePathChannel")
     public List<String> extractUniqueBasePathsByRegexMatching(final Message<SVNLogEntry> logEntryMessage) {
-        final SVNLogEntry logEntry = logEntryMessage.getPayload();
         final Integer regexCaptureGroupIndex = getMandatoryHeader(logEntryMessage, REGEX_CAPTURE_GROUP_INDEX_HEADER_NAME, Integer.class);
-        final String regex = getMandatoryHeader(logEntryMessage, REGEX_HEADER_NAME, String.class);
-        final Pattern pattern = Pattern.compile(regex);
+        final Pattern pattern = getRegexPattern(logEntryMessage);
+        final SVNLogEntry logEntry = logEntryMessage.getPayload();
         final Map<String, SVNLogEntryPath> paths = logEntry.getChangedPaths();
         final Set<String> matchingPaths = new HashSet<>();
         for (final Map.Entry<String, SVNLogEntryPath> path : paths.entrySet()) {
@@ -72,5 +72,14 @@ public class SubversionComponents {
             throw new MessagingException(message, String.format("Mandatory header '%s' missing", name));
         }
         return message.getHeaders().get(name, type);
+    }
+
+    private static Pattern getRegexPattern(final Message<SVNLogEntry> message) {
+        final String regex = getMandatoryHeader(message, REGEX_HEADER_NAME, String.class);
+        try {
+            return Pattern.compile(regex);
+        } catch (PatternSyntaxException e) {
+            throw new MessagingException(String.format("While compiling regex '%s'", regex), e);
+        }
     }
 }
