@@ -9,20 +9,20 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>stealth-core</artifactId>
+  <artifactId>stealth-samples</artifactId>
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.lapanen</groupId>
+      <artifactId>stealth-core</artifactId>
+      <version>${stealth.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.lapanen</groupId>
+      <artifactId>stealth-si-subversion</artifactId>
+      <version>${stealth.version}</version>
     </dependency>
   </dependencies>
-
-  <distributionManagement>
-    <site>
-      <url>http://lapanen.org</url>
-    </site>
-  </distributionManagement>
 
 
 </project>

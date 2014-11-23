@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>stealth-core</artifactId>
+  <artifactId>stealth-jenkins</artifactId>
 
   <dependencies>
     <dependency>
@@ -17,12 +17,5 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
   </dependencies>
-
-  <distributionManagement>
-    <site>
-      <url>http://lapanen.org</url>
-    </site>
-  </distributionManagement>
-
 
 </project>

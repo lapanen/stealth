@@ -14,6 +14,8 @@
     <module>stealth-core</module>
     <module>stealth-si-process</module>
     <module>stealth-si-subversion</module>
+    <module>stealth-samples</module>
+    <module>stealth-jenkins</module>
   </modules>
 
   <url>http://stealth.lapanen.org/${artifactId}</url>

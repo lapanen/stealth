@@ -8,11 +8,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.lapanen.stealth.si.subversion.annotation.SubversionLogEventConsumingServiceActivator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.integration.annotation.Payload;
-import org.springframework.messaging.handler.annotation.Header;
 import org.tmatesoft.svn.core.SVNLogEntry;
 import org.tmatesoft.svn.core.SVNLogEntryPath;
 

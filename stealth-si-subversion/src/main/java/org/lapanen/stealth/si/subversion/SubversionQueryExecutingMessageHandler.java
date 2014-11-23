@@ -13,10 +13,15 @@ import org.tmatesoft.svn.core.ISVNLogEntryHandler;
 import org.tmatesoft.svn.core.SVNException;
 import org.tmatesoft.svn.core.SVNLogEntry;
 import org.tmatesoft.svn.core.SVNURL;
+import org.tmatesoft.svn.core.internal.io.dav.DAVRepositoryFactory;
 import org.tmatesoft.svn.core.wc.SVNLogClient;
 import org.tmatesoft.svn.core.wc.SVNRevision;
 
 public class SubversionQueryExecutingMessageHandler extends AbstractMessageHandler {
+
+    static {
+        DAVRepositoryFactory.setup();
+    }
 
     private static final Logger log = LoggerFactory.getLogger(SubversionQueryExecutingMessageHandler.class);
 
@@ -42,8 +47,9 @@ public class SubversionQueryExecutingMessageHandler extends AbstractMessageHandl
         } else if (payload instanceof SVNRevision) {
             revision = (SVNRevision) payload;
         } else {
-            throw new MessageHandlingException(message, "Expected payload of type String, Long or " + SVNRevision.class.getCanonicalName() + ". Received ["
-                    + message.getPayload().getClass() + "]");
+            throw new MessageHandlingException(message,
+                    "Expected payload of type String, Long or " + SVNRevision.class.getCanonicalName() + ". Received [" + message.getPayload().getClass()
+                            + "]");
         }
 
         SVNLogClient client = null;
