@@ -11,3 +11,5 @@ src/site/site.xml
 stealth-maven-skin/src
 stealth-maven-skin/pom.xml
 stealth-si-subversion/stealth-si-subversion.iml
+stealth-samples/stealth-samples.iml
+stealth-jenkins/stealth-jenkins.iml
