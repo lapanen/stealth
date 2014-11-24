@@ -11,6 +11,7 @@ import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.core.MessageProducer;
 import org.springframework.integration.ip.config.TcpConnectionFactoryFactoryBean;
 import org.springframework.integration.ip.tcp.TcpReceivingChannelAdapter;
 import org.springframework.integration.ip.tcp.connection.AbstractConnectionFactory;
@@ -51,7 +52,7 @@ public abstract class TcpReceivingChannelAdapterConfig {
 
     @Bean
     @InboundChannelAdapter(value = "subversionTcpEventInChannel")
-    public TcpReceivingChannelAdapter subversionSocketListener() {
+    public MessageProducer subversionSocketListener() {
         TcpReceivingChannelAdapter ret = new TcpReceivingChannelAdapter();
         ret.setClientMode(false);
         ret.setConnectionFactory(tcpServerConnectionFactory());
