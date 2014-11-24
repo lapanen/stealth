@@ -49,6 +49,7 @@ public abstract class TcpReceivingChannelAdapterConfig {
         }
     }
 
+    @Bean
     @InboundChannelAdapter(value = "subversionTcpEventInChannel")
     public TcpReceivingChannelAdapter subversionSocketListener() {
         TcpReceivingChannelAdapter ret = new TcpReceivingChannelAdapter();
