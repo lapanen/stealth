@@ -11,8 +11,7 @@ import org.joda.time.DateTime;
 import org.lapanen.stealth.maven.artifact.Artifact;
 import org.lapanen.stealth.maven.repo.PathBuilder;
 import org.lapanen.stealth.maven.repo.UrlBuilder;
-import org.lapanen.stealth.signing.repo.mongo.ArtifactSigningRepository;
-import org.lapanen.stealth.signing.repo.mongo.MongoDbArtifactSigning;
+import org.lapanen.stealth.signing.repository.ArtifactSigningRepository;
 import org.lapanen.stealth.util.HttpDownloadUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,11 +80,11 @@ public class SignedJarRepoImpl implements SignedJarRepo {
 
     @Override
     public Optional<ArtifactSigning> findLastSigningFor(final Artifact artifact) {
-        final List<MongoDbArtifactSigning> signings = signingRepository
+        final List<ArtifactSigning> signings = signingRepository
                 .findByGroupIdAndArtifactIdAndVersion(artifact.getGroupId(), artifact.getArtifactId(), artifact.getVersion(),
                         new Sort(Sort.Direction.DESC, "signingTime"));
         if (!signings.isEmpty()) {
-            return Optional.of(signings.get(0).getArtifactSigning());
+            return Optional.of(signings.get(0));
         }
         return Optional.absent();
     }

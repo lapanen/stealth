@@ -9,13 +9,19 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>stealth-core</artifactId>
+  <artifactId>stealth-jar-signing-mongodb</artifactId>
 
   <dependencies>
     <dependency>
+      <groupId>org.lapanen</groupId>
+      <artifactId>stealth-jar-signing</artifactId>
+      <version>${stealth.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
   </dependencies>
+
 
 </project>

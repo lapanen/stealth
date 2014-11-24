@@ -16,9 +16,8 @@
     <module>stealth-si-subversion</module>
     <module>stealth-samples</module>
     <module>stealth-jenkins</module>
+    <module>stealth-jar-signing-mongodb</module>
   </modules>
-
-  <url>http://stealth.lapanen.org/${artifactId}</url>
 
   <licenses>
     <license>
@@ -26,6 +25,9 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
   </licenses>
+
+<!--
+  <url>http://stealth.lapanen.org/${artifactId}</url>
 
   <organization>
     <name>Lapanen.org</name>
@@ -46,6 +48,7 @@
   <scm>
     <url>https://github.com/lapanen/stealth</url>
   </scm>
+-->
 
   <properties>
 
