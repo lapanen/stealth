@@ -1,7 +1,6 @@
 package org.lapanen.stealth.signing;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.security.cert.Certificate;
@@ -13,6 +12,7 @@ import org.lapanen.stealth.maven.repo.PathBuilder;
 import org.lapanen.stealth.maven.repo.UrlBuilder;
 import org.lapanen.stealth.signing.repository.ArtifactSigningRepository;
 import org.lapanen.stealth.util.HttpDownloadUtil;
+import org.lapanen.stealth.util.TemporaryFileOutputStreamClosable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,30 +51,15 @@ public class SignedJarRepoImpl implements SignedJarRepo {
 
     @Override
     public ArtifactSigning fetchAndSign(final Artifact artifact) throws SigningException {
-        File tmp = null;
-        FileOutputStream fos = null;
-        try {
+        try (final TemporaryFileOutputStreamClosable tmpOut = new TemporaryFileOutputStreamClosable("signing-", ".jar")) {
             final URI jarUri = sourceUrlBuilder.buildUri(artifact);
-            tmp = File.createTempFile("signing-", ".jar");
-            fos = new FileOutputStream(tmp);
-            log.debug("Downloading {} from {} and writing response to {}", new Object[] { artifact, jarUri, tmp });
-            HttpDownloadUtil.writeGetUrlTargetToStream(jarUri, fos, rest);
+            log.debug("Downloading {} from {} and writing response to a tmp file {}", new Object[] { artifact, jarUri, tmpOut.getFile() });
+            HttpDownloadUtil.writeGetUrlTargetToStream(jarUri, tmpOut.getOutputStream(), rest);
             final File target = targetPathBuilder.buildJarFilePath(artifact);
-            final Certificate cert = signer.signJar(tmp.getAbsolutePath(), target.getAbsolutePath());
+            final Certificate cert = signer.signJar(tmpOut.getFile().getAbsolutePath(), target.getAbsolutePath());
             return new ArtifactSigningImpl(artifact, cert, new DateTime());
         } catch (IOException e) {
             throw new SigningException(e);
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    throw new SigningException(e);
-                }
-            }
-            if (tmp != null) {
-                tmp.delete();
-            }
         }
     }
 
@@ -88,4 +73,5 @@ public class SignedJarRepoImpl implements SignedJarRepo {
         }
         return Optional.absent();
     }
+
 }
