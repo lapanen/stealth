@@ -8,25 +8,31 @@ import org.lapanen.stealth.maven.artifact.Artifact;
 
 public class ArtifactSigningImpl implements ArtifactSigning {
 
-    public ArtifactSigningImpl() {
+    private  DateTime signingTime;
+    private  Certificate certificate;
+    private  Artifact artifact;
 
+    public ArtifactSigningImpl() {
     }
 
     public ArtifactSigningImpl(final Artifact artifact, final Certificate cert, final DateTime dateTime) {
+        this.artifact = artifact;
+        this.certificate = cert;
+        this.signingTime = dateTime;
     }
 
     @Override
     public Artifact getArtifact() {
-        return null;
+        return artifact;
     }
 
     @Override
     public Certificate getCertificate() {
-        return null;
+        return certificate;
     }
 
     @Override
     public ReadableInstant getSigningTime() {
-        return null;
+        return signingTime;
     }
 }

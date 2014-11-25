@@ -7,11 +7,11 @@ import org.lapanen.stealth.maven.artifact.Artifact;
 import com.google.common.base.Preconditions;
 
 public class PackagingSigningStrategy implements SigningStrategy {
-    private final List<String> allowedPackagings;
+    private final String[] allowedPackagings;
 
-    public PackagingSigningStrategy(final List<String> allowedPackagings) {
+    public PackagingSigningStrategy(final String ... allowedPackagings) {
         Preconditions.checkNotNull(allowedPackagings, "Packaging list must not be null");
-        Preconditions.checkArgument(!allowedPackagings.isEmpty(), "Packaging list must not be empty");
+        Preconditions.checkArgument(allowedPackagings.length > 0, "Packaging list must not be empty");
         this.allowedPackagings = allowedPackagings;
     }
 

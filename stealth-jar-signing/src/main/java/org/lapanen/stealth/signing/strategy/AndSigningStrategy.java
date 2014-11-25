@@ -6,7 +6,7 @@ import org.lapanen.stealth.maven.artifact.Artifact;
 
 public class AndSigningStrategy extends AbstractBooleanSigningStrategy implements SigningStrategy {
 
-    public AndSigningStrategy(final List<SigningStrategy> strategies) {
+    public AndSigningStrategy(final SigningStrategy ... strategies) {
         super(strategies);
     }
 

@@ -7,16 +7,16 @@ import com.google.common.base.Preconditions;
 
 public abstract class AbstractBooleanSigningStrategy extends AbstractSigningStrategy {
 
-    private final List<SigningStrategy> strategies;
+    private final SigningStrategy[] strategies;
 
-    protected AbstractBooleanSigningStrategy(final List<SigningStrategy> strategies) {
+    protected AbstractBooleanSigningStrategy(final SigningStrategy ... strategies) {
         Preconditions.checkNotNull(strategies, "Strategies must not be null");
-        Preconditions.checkArgument(!strategies.isEmpty(), "Strategies must not be empty");
-        this.strategies = Collections.unmodifiableList(strategies);
+        Preconditions.checkArgument(strategies.length > 0, "Strategies must not be empty");
+        this.strategies = strategies;
     }
 
-    protected List<SigningStrategy> getStrategies() {
-        return Collections.unmodifiableList(strategies);
+    protected SigningStrategy[] getStrategies() {
+        return strategies;
     }
 
 }
