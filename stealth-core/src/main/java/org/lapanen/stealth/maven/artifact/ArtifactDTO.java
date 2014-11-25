@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.google.common.base.Optional;
+
 public class ArtifactDTO implements Artifact {
 
     /**
@@ -48,6 +50,11 @@ public class ArtifactDTO implements Artifact {
     @Override
     public String getPackaging() {
         return packaging;
+    }
+
+    @Override
+    public Optional<String> getClassifier() {
+        return Optional.absent();
     }
 
     public void addParent(final Artifact parent) {
