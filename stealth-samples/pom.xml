@@ -22,7 +22,55 @@
       <artifactId>stealth-si-subversion</artifactId>
       <version>${stealth.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.lapanen</groupId>
+      <artifactId>stealth-jenkins</artifactId>
+      <version>${stealth.version}</version>
+    </dependency>
   </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.lapanen</groupId>
+          <artifactId>stealth-maven-plugin</artifactId>
+          <version>${stealth.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.lapanen</groupId>
+              <artifactId>stealth-artifact-transport-rabbitmq</artifactId>
+              <version>${stealth.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <transportConfiguration>
+              <port>5416</port>
+              <host>localhost</host>
+              <username>stealth</username>
+              <password>hush-hush</password>
+              <exchange>exchange.stealth</exchange>
+              <routingKey>stealth.artifact</routingKey>
+            </transportConfiguration>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>install</phase>
+              <goals>
+                <goal>notify-artifact</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.lapanen</groupId>
+        <artifactId>stealth-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 
 </project>

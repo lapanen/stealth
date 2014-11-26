@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>stealth</artifactId>
+    <groupId>org.lapanen</groupId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>stealth-maven-plugin-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <properties>
+    <maven-model.version>2.2.1</maven-model.version>
+    <maven-plugin-api.version>2.0</maven-plugin-api.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.lapanen</groupId>
+      <artifactId>stealth-core</artifactId>
+      <version>${stealth.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>${maven-plugin-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <version>${maven-model.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+      <version>${maven-model.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-core</artifactId>
+      <version>${maven-model.version}</version>
+    </dependency>
+
+  </dependencies>
+
+
+</project>

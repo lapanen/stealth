@@ -14,3 +14,6 @@ stealth-si-subversion/stealth-si-subversion.iml
 stealth-samples/stealth-samples.iml
 stealth-jenkins/stealth-jenkins.iml
 stealth-jar-signing-mongodb/stealth-jar-signing-mongodb.iml
+stealth-artifact-transport-rabbitmq/stealth-artifact-transport-rabbitmq.iml
+stealth-maven-plugin-parent/stealth-maven-plugin-parent.iml
+stealth-maven-plugin/stealth-maven-plugin.iml
