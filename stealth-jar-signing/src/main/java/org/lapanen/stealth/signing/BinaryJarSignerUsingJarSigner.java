@@ -37,7 +37,12 @@ public class BinaryJarSignerUsingJarSigner implements JarSigner {
 
     public BinaryJarSignerUsingJarSigner(final String keystore, final String keystoreType, final String alias, final String storepass, final String keypass,
             final String jarSignerBinaryPath) {
-        Preconditions.checkNotNull(keystore, keystoreType, alias, storepass, keypass, jarSignerBinaryPath);
+        Preconditions.checkNotNull(keystore, "keystore must not be null");
+        Preconditions.checkNotNull(keystoreType, "keystoreType must not be null");
+        Preconditions.checkNotNull(alias, "alias must not be null");
+        Preconditions.checkNotNull(storepass, "storepass must not be null");
+        Preconditions.checkNotNull(keypass, "keypass must not be null");
+        Preconditions.checkNotNull(jarSignerBinaryPath, "jarSignerBinaryPath must not be null");
         this.jarSignerBinaryPath = jarSignerBinaryPath;
         this.keystorePath = keystore;
         this.alias = alias;
