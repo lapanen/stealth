@@ -20,6 +20,7 @@
     <module>stealth-maven-plugin-parent</module>
     <module>stealth-maven-plugin</module>
     <module>stealth-artifact-transport-rabbitmq</module>
+    <module>stealth-si-core</module>
   </modules>
 
   <licenses>
