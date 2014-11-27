@@ -7,8 +7,14 @@ import org.joda.time.ReadableInstant;
 import org.lapanen.stealth.maven.artifact.Artifact;
 import org.lapanen.stealth.signing.ArtifactSigning;
 import org.lapanen.stealth.signing.ArtifactSigningImpl;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class MongoDbArtifactSigning extends ArtifactSigningImpl {
+
+    @Id
+    private String identifier;
 
     public MongoDbArtifactSigning() {
         super();

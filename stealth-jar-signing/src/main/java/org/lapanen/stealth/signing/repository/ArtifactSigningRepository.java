@@ -7,6 +7,8 @@ import org.lapanen.stealth.signing.ArtifactSigning;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ArtifactSigningRepository extends CrudRepository<String, ArtifactSigning> {
-    List<ArtifactSigning> findByGroupIdAndArtifactIdAndVersion(String groupId, String artifactId, String version, Sort sort);
+public interface ArtifactSigningRepository<T extends ArtifactSigning> extends CrudRepository<T, String> {
+
+    List<T> findByGroupIdAndArtifactIdAndVersion(String groupId, String artifactId, String version, Sort sort);
+
 }

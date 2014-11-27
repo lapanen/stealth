@@ -17,27 +17,28 @@ import com.google.common.base.Preconditions;
  */
 public class ArtifactSigningStealth implements Stealth {
 
-    private static final  Logger LOG = LoggerFactory.getLogger(ArtifactSigningStealth.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ArtifactSigningStealth.class);
 
-    private Executor signingExecutor = null;
+    private final SignedJarRepo signedJarRepo;
 
     private final SigningStrategy artifactSigningStrategy;
 
     private final Optional<SigningStrategy> dependencySigningStrategy;
 
-    private final SignedJarRepo signedJarRepo;
+    private Optional<Executor> signingExecutor = Optional.absent();
 
     public ArtifactSigningStealth(final SignedJarRepo signedJarRepo, final SigningStrategy artifactSigningStrategy,
-            final SigningStrategy dependencySigningStrategy) {
+            final Optional<SigningStrategy> dependencySigningStrategy) {
         Preconditions.checkNotNull(signedJarRepo, "Signed jar repo must not be null");
         Preconditions.checkNotNull(artifactSigningStrategy, "Artifact signing strategy must not be null");
+        Preconditions.checkNotNull(dependencySigningStrategy, "Dependency signing strategy is optional, but must not be null");
         this.signedJarRepo = signedJarRepo;
         this.artifactSigningStrategy = artifactSigningStrategy;
-        this.dependencySigningStrategy = Optional.fromNullable(dependencySigningStrategy);
+        this.dependencySigningStrategy = dependencySigningStrategy;
     }
 
     public ArtifactSigningStealth(final SignedJarRepo signedJarRepo, final SigningStrategy artifactSigningStrategy) {
-        this(signedJarRepo, artifactSigningStrategy, null);
+        this(signedJarRepo, artifactSigningStrategy, Optional.<SigningStrategy> absent());
     }
 
     @Override
@@ -53,9 +54,9 @@ public class ArtifactSigningStealth implements Stealth {
 
     private void signIfAppropriate(final Artifact artifact, final SigningStrategy strategy) {
         if (strategy.shouldSign(artifact)) {
-            if (signingExecutor != null) {
+            if (signingExecutor.isPresent()) {
                 LOG.debug("Delegating signing to executor");
-                signingExecutor.execute(new Runnable() {
+                signingExecutor.get().execute(new Runnable() {
                     @Override
                     public void run() {
                         doSign(artifact);
@@ -76,6 +77,6 @@ public class ArtifactSigningStealth implements Stealth {
     }
 
     public void setSigningExecutor(final Executor signingExecutor) {
-        this.signingExecutor = signingExecutor;
+        this.signingExecutor = Optional.of(signingExecutor);
     }
 }

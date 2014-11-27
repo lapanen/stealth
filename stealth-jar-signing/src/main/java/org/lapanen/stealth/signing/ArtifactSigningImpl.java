@@ -12,7 +12,7 @@ public class ArtifactSigningImpl implements ArtifactSigning {
     private  Certificate certificate;
     private  Artifact artifact;
 
-    public ArtifactSigningImpl() {
+    protected ArtifactSigningImpl() {
     }
 
     public ArtifactSigningImpl(final Artifact artifact, final Certificate cert, final DateTime dateTime) {
