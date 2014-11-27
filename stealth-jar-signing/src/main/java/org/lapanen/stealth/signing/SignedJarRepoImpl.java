@@ -51,9 +51,9 @@ public class SignedJarRepoImpl implements SignedJarRepo {
 
     @Override
     public ArtifactSigning fetchAndSign(final Artifact artifact) throws SigningException {
-        try (final TemporaryFileOutputStreamClosable tmpOut = new TemporaryFileOutputStreamClosable("signing-", ".jar")) {
+        try (final TemporaryFileOutputStreamClosable tmpOut = new TemporaryFileOutputStreamClosable("stealth-signing-", ".jar")) {
             final URI jarUri = sourceUrlBuilder.buildUri(artifact);
-            log.debug("Downloading {} from {} and writing response to a tmp file {}", new Object[] { artifact, jarUri, tmpOut.getFile() });
+            log.debug("Downloading {} from {} and writing response to a tmp file {}", artifact, jarUri, tmpOut.getFile());
             HttpDownloadUtil.writeGetUrlTargetToStream(jarUri, tmpOut.getOutputStream(), rest);
             final File target = targetPathBuilder.buildJarFilePath(artifact);
             final Certificate cert = signer.signJar(tmpOut.getFile().getAbsolutePath(), target.getAbsolutePath());
