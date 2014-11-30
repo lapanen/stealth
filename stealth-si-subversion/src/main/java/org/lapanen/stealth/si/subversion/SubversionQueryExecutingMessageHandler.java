@@ -19,6 +19,7 @@ import org.tmatesoft.svn.core.wc.SVNRevision;
 
 public class SubversionQueryExecutingMessageHandler extends AbstractMessageHandler {
 
+    // TODO: This should be somewhere completely different
     static {
         DAVRepositoryFactory.setup();
     }
@@ -52,7 +53,6 @@ public class SubversionQueryExecutingMessageHandler extends AbstractMessageHandl
                             + "]");
         }
 
-        SVNLogClient client = null;
         SVNURL repositoryUrl = null;
         final Object url = message.getHeaders().get(REPOSITORY_URL_HEADER_NAME);
         if (url == null) {
@@ -60,7 +60,6 @@ public class SubversionQueryExecutingMessageHandler extends AbstractMessageHandl
                 throw new MessageHandlingException(message, "More than one client configured, header '" + REPOSITORY_URL_HEADER_NAME + "' must be present");
             }
             repositoryUrl = clients.keySet().iterator().next();
-            client = clients.get(repositoryUrl);
         } else {
             if (url instanceof String) {
                 repositoryUrl = SVNURL.parseURIEncoded((String) url);
@@ -68,6 +67,7 @@ public class SubversionQueryExecutingMessageHandler extends AbstractMessageHandl
                 repositoryUrl = (SVNURL) url;
             }
         }
+        SVNLogClient client = clients.get(repositoryUrl);
 
         log.debug("Getting log entry from repo {} for revision {}", repositoryUrl, revision);
         client.doLog(repositoryUrl, null, revision, revision, revision, false, true, 1, new ISVNLogEntryHandler() {
