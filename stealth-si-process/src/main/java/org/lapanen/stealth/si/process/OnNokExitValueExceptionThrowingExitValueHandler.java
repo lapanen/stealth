@@ -6,6 +6,15 @@ public class OnNokExitValueExceptionThrowingExitValueHandler implements ExitValu
 
     private int okExitValue = 0;
 
+    /**
+     * @param result
+     *
+     * @return the original result
+     *
+     * @throws org.springframework.messaging.MessagingException
+     *         if the {@code result}'s {@link ProcessRunResult#getExitCode()} is not present, or not the same
+     *         as {@link #setOkExitValue(int)}.
+     */
     @Override
     public ProcessRunResult handleResult(final ProcessRunResult result) {
         if (result.getExitCode().isPresent()) {
