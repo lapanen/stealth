@@ -28,6 +28,7 @@ public class ProcessInboundChannelAdapter implements MessageSource<ProcessRunRes
 
     @Override
     public Message<ProcessRunResult> receive() {
-        return MessageBuilder.withPayload(processExecutor.execute(executorService)).build();
+        final ProcessRunResult result = exitValueResultHandler.handleResult(processExecutor.execute(executorService));
+        return MessageBuilder.withPayload(result).build();
     }
 }
