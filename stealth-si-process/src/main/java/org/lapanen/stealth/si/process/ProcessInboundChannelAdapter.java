@@ -22,6 +22,12 @@ public class ProcessInboundChannelAdapter implements MessageSource<ProcessRunRes
         this.executorService = executorService;
         this.exitValueResultHandler = exitValueResultHandler;
     }
+
+    /**
+     * Create a new adapter with {@link org.lapanen.stealth.si.process.OnNokExitValueExceptionThrowingExitValueHandler} as the exit value handler.
+     * @param processExecutor
+     * @param executorService
+     */
     public ProcessInboundChannelAdapter(final ProcessExecutor processExecutor, final ExecutorService executorService) {
         this(processExecutor, executorService, new OnNokExitValueExceptionThrowingExitValueHandler());
     }

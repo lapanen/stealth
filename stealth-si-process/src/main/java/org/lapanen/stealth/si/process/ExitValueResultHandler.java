@@ -4,7 +4,7 @@ public interface ExitValueResultHandler {
     /**
      *
      * @param result
-     * @return the original result, if processing may continue.
+     * @return the result, if processing may continue.
      */
     ProcessRunResult handleResult(ProcessRunResult result);
 }
