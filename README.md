@@ -1,4 +1,4 @@
-stealth
+Stealth
 =======
 
-README TBA.
+Modules contain various and miscellaneous helpers and Spring Integration wrappers for them. 
