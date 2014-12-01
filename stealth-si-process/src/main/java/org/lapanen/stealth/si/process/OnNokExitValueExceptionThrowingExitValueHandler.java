@@ -1,0 +1,33 @@
+package org.lapanen.stealth.si.process;
+
+import org.springframework.messaging.MessagingException;
+
+public class OnNokExitValueExceptionThrowingExitValueHandler implements ExitValueResultHandler {
+
+    private int okExitValue = 0;
+
+    @Override
+    public ProcessRunResult handleResult(final ProcessRunResult result) {
+        if (result.getExitCode().isPresent()) {
+            final int exit = result.getExitCode().get();
+            if (exit != okExitValue) {
+                final StringBuilder exceptionMessageBuilder = new StringBuilder(String.format("Non-OK exit value (%s)", exit));
+                if (result.getError().isPresent()) {
+                    exceptionMessageBuilder.append(new String(result.getError().get()));
+                }
+                throw new MessagingException(exceptionMessageBuilder.toString());
+            }
+        } else {
+            if (result.getThrowable().isPresent()) {
+                throw new MessagingException("No exit value", result.getThrowable().get());
+            } else {
+                throw new MessagingException("No exit value and no Throwable attached");
+            }
+        }
+        return result;
+    }
+
+    public void setOkExitValue(final int okExitValue) {
+        this.okExitValue = okExitValue;
+    }
+}

@@ -14,9 +14,16 @@ public class ProcessInboundChannelAdapter implements MessageSource<ProcessRunRes
 
     private final ExecutorService executorService;
 
-    public ProcessInboundChannelAdapter(final ProcessExecutor processExecutor, final ExecutorService executorService) {
+    private final ExitValueResultHandler exitValueResultHandler;
+
+    public ProcessInboundChannelAdapter(final ProcessExecutor processExecutor, final ExecutorService executorService,
+            final ExitValueResultHandler exitValueResultHandler) {
         this.processExecutor = processExecutor;
         this.executorService = executorService;
+        this.exitValueResultHandler = exitValueResultHandler;
+    }
+    public ProcessInboundChannelAdapter(final ProcessExecutor processExecutor, final ExecutorService executorService) {
+        this(processExecutor, executorService, new OnNokExitValueExceptionThrowingExitValueHandler());
     }
 
     @Override
