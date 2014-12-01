@@ -54,7 +54,7 @@ public class ProcessRunResultImpl implements ProcessRunResult {
 
     @Override
     public Optional<Throwable> getThrowable() {
-        return null;
+        return Optional.fromNullable(throwable);
     }
 
     @Override

@@ -16,13 +16,13 @@ public class OnNokExitValueExceptionThrowingExitValueHandler implements ExitValu
      *         as {@link #setOkExitValue(int)}.
      */
     @Override
-    public ProcessRunResult handleResult(final ProcessRunResult result) {
+    public ProcessRunResult handleResult(final ProcessRunResult result) throws MessagingException {
         if (result.getExitCode().isPresent()) {
             final int exit = result.getExitCode().get();
             if (exit != okExitValue) {
                 final StringBuilder exceptionMessageBuilder = new StringBuilder(String.format("Non-OK exit value (%s)", exit));
                 if (result.getError().isPresent()) {
-                    exceptionMessageBuilder.append(new String(result.getError().get()));
+                    exceptionMessageBuilder.append(": " + new String(result.getError().get()));
                 }
                 throw new MessagingException(exceptionMessageBuilder.toString());
             }
