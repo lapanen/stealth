@@ -1,11 +1,9 @@
-package repository.mongodb;
+package org.lapanen.stealth.signing.repository.mongodb;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.lapanen.stealth.signing.repository.ArtifactSigningRepository;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.CrudRepository;
 
 public interface MongoDbArtifactSigningRepository extends ArtifactSigningRepository<MongoDbArtifactSigning> {
 
