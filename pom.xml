@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.lapanen</groupId>
@@ -21,6 +19,8 @@
     <module>stealth-maven-plugin</module>
     <module>stealth-artifact-transport-rabbitmq</module>
     <module>stealth-si-core</module>
+    <module>stealth-spring-rmi</module>
+    <module>stealth-jenkins-plugin</module>
   </modules>
 
   <licenses>
@@ -71,9 +71,11 @@
     <jsr305.version>3.0.0</jsr305.version>
     <joda-time.version>2.3</joda-time.version>
 
+    <spring.version>4.0.7.RELEASE</spring.version>
     <spring-boot.version>1.1.6.RELEASE</spring-boot.version>
     <spring-integration.version>4.0.2.RELEASE</spring-integration.version>
     <spring-rabbit.version>1.4.0.RELEASE</spring-rabbit.version>
+    <spring-security.version>3.1.2.RELEASE</spring-security.version>
 
     <java.version>1.7</java.version>
     <maven-compiler-plugin.source.version>${java.version}</maven-compiler-plugin.source.version>
@@ -109,6 +111,21 @@
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
         <version>${joda-time.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-remoting</artifactId>
+        <version>${spring-security.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -153,6 +170,11 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
