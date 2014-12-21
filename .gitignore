@@ -15,5 +15,5 @@ stealth-artifact-transport-rabbitmq/stealth-artifact-transport-rabbitmq.iml
 stealth-maven-plugin-parent/stealth-maven-plugin-parent.iml
 stealth-maven-plugin/stealth-maven-plugin.iml
 stealth-si-core/stealth-si-core.iml
-
 stealth-jenkins-plugin/stealth-jenkins-plugin.iml
+stealth-spring-rmi/stealth-spring-rmi.iml
