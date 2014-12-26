@@ -3,13 +3,14 @@ package org.lapanen.stealth;
 import java.util.Collections;
 import java.util.List;
 
+import org.lapanen.stealth.event.StealthEvent;
 import org.lapanen.stealth.maven.artifact.Artifact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
 
-public class DelegatingStealth implements Stealth {
+public class DelegatingStealth<T extends StealthEvent> implements Stealth<T> {
     private static final Logger LOG = LoggerFactory.getLogger(DelegatingStealth.class);
 
     private final List<Stealth> handlers;
@@ -21,11 +22,10 @@ public class DelegatingStealth implements Stealth {
     }
 
     @Override
-    public void handleArtifact(final Artifact artifact) {
+    public void handleEvent(final T event) {
         for (final Stealth handler : handlers) {
             LOG.debug("Delegating to handler {}", handler);
-            handler.handleArtifact(artifact);
+            handler.handleEvent(event);
         }
     }
-
 }
