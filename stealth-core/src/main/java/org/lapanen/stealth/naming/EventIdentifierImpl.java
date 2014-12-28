@@ -6,42 +6,18 @@ import java.util.UUID;
 
 public class EventIdentifierImpl implements EventIdentifier {
 
-    private static String resolvedHostname;
-
-    private final String name;
 
     private final UUID uuid;
 
-    private final String hostname;
+    private final ComponentIdentifier sourceComponent;
 
-    private EventIdentifierImpl(final String name, final UUID uuid, final String hostname) {
-        this.name = name;
+    public EventIdentifierImpl(final UUID uuid, final ComponentIdentifier sourceComponent) {
         this.uuid = uuid;
-        this.hostname = hostname;
+        this.sourceComponent = sourceComponent;
     }
 
-    public EventIdentifierImpl(final String name, final UUID uuid) {
-        this(name, uuid, resolveHost());
-    }
-
-    public EventIdentifierImpl(final String name) {
-        this(name, UUID.randomUUID(), resolveHost());
-    }
-
-    private static String resolveHost() {
-        if (resolvedHostname == null) {
-            try {
-                resolvedHostname = InetAddress.getLocalHost().getCanonicalHostName();
-            } catch (UnknownHostException e) {
-                resolvedHostname = "UNRESOLVED.HOST";
-            }
-        }
-        return resolvedHostname;
-    }
-
-    @Override
-    public String getName() {
-        return name;
+    public EventIdentifierImpl(final ComponentIdentifier sourceComponent) {
+        this(UUID.randomUUID(), sourceComponent);
     }
 
     @Override
@@ -50,16 +26,14 @@ public class EventIdentifierImpl implements EventIdentifier {
     }
 
     @Override
-    public String getHostName() {
-        return hostname;
+    public ComponentIdentifier getSourceComponent() {
+        return sourceComponent;
     }
 
     @Override
     public String toString() {
         return "EventIdentifier{" +
-                "name='" + name + '\'' +
-                ", uuid=" + uuid +
-                ", hostname='" + hostname + '\'' +
+                "uuid=" + uuid +
                 '}';
     }
 

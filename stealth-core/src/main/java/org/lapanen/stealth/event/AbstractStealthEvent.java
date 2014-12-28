@@ -2,6 +2,7 @@ package org.lapanen.stealth.event;
 
 import org.joda.time.Instant;
 import org.joda.time.ReadableInstant;
+import org.lapanen.stealth.naming.ComponentIdentifier;
 import org.lapanen.stealth.naming.EventIdentifier;
 import org.lapanen.stealth.naming.EventIdentifierImpl;
 
@@ -11,8 +12,8 @@ public abstract class AbstractStealthEvent implements StealthEvent {
 
     private final ReadableInstant creationTime;
 
-    protected AbstractStealthEvent(final String name) {
-        this.eventIdentifier = new EventIdentifierImpl(name);
+    protected AbstractStealthEvent(final EventIdentifier eventIdentifier) {
+        this.eventIdentifier = eventIdentifier;
         creationTime = new Instant();
     }
 

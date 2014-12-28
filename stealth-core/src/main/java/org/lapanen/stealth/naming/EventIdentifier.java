@@ -4,6 +4,5 @@ import java.util.UUID;
 
 public interface EventIdentifier {
     UUID getUUID();
-    String getName();
-    String getHostName();
+    ComponentIdentifier getSourceComponent();
 }
