@@ -21,6 +21,8 @@
     <module>stealth-si-core</module>
     <module>stealth-spring-rmi</module>
     <module>stealth-jenkins-plugin</module>
+    <module>stealth-configuration</module>
+    <module>stealth-amqp-support</module>
   </modules>
 
   <licenses>
@@ -118,6 +120,21 @@
         <version>${spring.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-messaging</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-remoting</artifactId>
         <version>${spring-security.version}</version>
@@ -141,6 +158,11 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-integration</artifactId>
         <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.integration</groupId>
+        <artifactId>spring-integration-core</artifactId>
+        <version>${spring-integration.version}</version>
       </dependency>
       <dependency>
         <groupId>org.springframework.integration</groupId>
@@ -173,8 +195,8 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
