@@ -17,3 +17,5 @@ stealth-maven-plugin/stealth-maven-plugin.iml
 stealth-si-core/stealth-si-core.iml
 stealth-jenkins-plugin/stealth-jenkins-plugin.iml
 stealth-spring-rmi/stealth-spring-rmi.iml
+stealth-configuration/stealth-configuration.iml
+stealth-amqp-support/stealth-amqp-support.iml
