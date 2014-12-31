@@ -19,3 +19,5 @@ stealth-jenkins-plugin/stealth-jenkins-plugin.iml
 stealth-spring-rmi/stealth-spring-rmi.iml
 stealth-configuration/stealth-configuration.iml
 stealth-amqp-support/stealth-amqp-support.iml
+stealth-jenkins-plugin/work
+stealth-messaging/stealth-messaging.iml

@@ -23,6 +23,8 @@
     <module>stealth-jenkins-plugin</module>
     <module>stealth-configuration</module>
     <module>stealth-amqp-support</module>
+    <module>stealth-messaging</module>
+    <module>stealth-messaging-rabbitmq</module>
   </modules>
 
   <licenses>
@@ -172,6 +174,11 @@
       <dependency>
         <groupId>org.springframework.integration</groupId>
         <artifactId>spring-integration-file</artifactId>
+        <version>${spring-integration.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.integration</groupId>
+        <artifactId>spring-integration-amqp</artifactId>
         <version>${spring-integration.version}</version>
       </dependency>
       <dependency>
