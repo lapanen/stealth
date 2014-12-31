@@ -21,3 +21,4 @@ stealth-configuration/stealth-configuration.iml
 stealth-amqp-support/stealth-amqp-support.iml
 stealth-jenkins-plugin/work
 stealth-messaging/stealth-messaging.iml
+stealth-messaging-rabbitmq/stealth-messaging-rabbitmq.iml
