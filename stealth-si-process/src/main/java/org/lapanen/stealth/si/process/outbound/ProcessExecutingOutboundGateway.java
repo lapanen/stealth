@@ -23,4 +23,7 @@ public class ProcessExecutingOutboundGateway extends AbstractReplyProducingMessa
         return handler.handleResult(ProcessExecutorIntegrationUtils.prepareExecutor(requestMessage).execute());
     }
 
+    public void setHandler(final ExitValueResultHandler handler) {
+        this.handler = handler;
+    }
 }
