@@ -1,8 +1,8 @@
-package org.lapanen.stealth.si.process;
+package org.lapanen.stealth.si.process.core;
 
 import org.springframework.messaging.MessagingException;
 
-public class OnNokExitValueExceptionThrowingExitValueHandler implements ExitValueResultHandler {
+public class OnNokExitValueExceptionThrowingExitValueHandler implements ExitValueResultHandler<ProcessRunResult> {
 
     private int okExitValue = 0;
 
@@ -39,4 +39,5 @@ public class OnNokExitValueExceptionThrowingExitValueHandler implements ExitValu
     public void setOkExitValue(final int okExitValue) {
         this.okExitValue = okExitValue;
     }
+
 }

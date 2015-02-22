@@ -3,6 +3,9 @@ package org.lapanen.stealth.si.process;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.lapanen.stealth.si.process.core.OnNokExitValueExceptionThrowingExitValueHandler;
+import org.lapanen.stealth.si.process.core.ProcessRunResult;
+import org.lapanen.stealth.si.process.core.ProcessRunResultImpl;
 import org.springframework.messaging.MessagingException;
 
 public class OnNokExitValueExceptionThrowingExitValueHandlerTest {

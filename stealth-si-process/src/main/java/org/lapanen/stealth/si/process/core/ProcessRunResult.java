@@ -1,4 +1,4 @@
-package org.lapanen.stealth.si.process;
+package org.lapanen.stealth.si.process.core;
 
 import java.io.Serializable;
 

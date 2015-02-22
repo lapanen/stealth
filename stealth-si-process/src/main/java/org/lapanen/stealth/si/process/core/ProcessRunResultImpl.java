@@ -1,6 +1,4 @@
-package org.lapanen.stealth.si.process;
-
-import java.util.Arrays;
+package org.lapanen.stealth.si.process.core;
 
 import com.google.common.base.Optional;
 
@@ -62,8 +60,8 @@ public class ProcessRunResultImpl implements ProcessRunResult {
         return "ProcessRunResultImpl{" +
                 "exitCode=" + exitCode +
                 ", completed=" + completed +
-                ", output=" + output + " bytes" +
-                ", error=" + error + " bytes" +
+                ", output=" + output +
+                ", error=" + error  +
                 ", throwable=" + throwable +
                 '}';
     }
