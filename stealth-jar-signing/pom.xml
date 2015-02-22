@@ -18,6 +18,11 @@
       <version>${stealth.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.lapanen</groupId>
+      <artifactId>stealth-si-process</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>

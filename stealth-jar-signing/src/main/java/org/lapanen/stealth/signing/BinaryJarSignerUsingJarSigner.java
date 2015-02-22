@@ -10,6 +10,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 
+import org.lapanen.stealth.si.process.core.ProcessExecutorImpl;
+import org.lapanen.stealth.si.process.core.ProcessRunResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,30 +92,13 @@ public class BinaryJarSignerUsingJarSigner implements JarSigner {
     }
 
     private void runJarSigner(final String sourcePath, final String targetPath) throws SigningException {
-        try {
-            final ProcessBuilder builder = new ProcessBuilder(jarSignerBinaryPath, "-storepass", storepass, "-keypass", keypass, "-keystore", keystorePath,
-                    "-signedjar", targetPath, sourcePath, alias);
-            builder.redirectErrorStream(true);
-            final Process p = builder.start();
-            final InputStream input = p.getInputStream();
-            final StringBuilder jarsignerOutput = new StringBuilder("");
-            int i;
-            while ((i = input.read()) != -1) {
-                jarsignerOutput.append((char) i);
-            }
-            input.close();
-            try {
-                int exit = p.waitFor();
-                if (exit != 0) {
-                    throw new SigningException("Non-zero (" + exit + ") exit value from jarsigner: " + jarsignerOutput.toString());
-                }
-            } catch (InterruptedException e) {
-                LOG.debug("", e);
-            }
-        } catch (IOException e) {
-            throw new SigningException(e);
+        final ProcessExecutorImpl processExecutor = new ProcessExecutorImpl(jarSignerBinaryPath, "-storepass", storepass, "-keypass", keypass, "-keystore",
+                keystorePath, "-signedjar", targetPath, sourcePath, alias);
+        processExecutor.setMergeOutput(true);
+        final ProcessRunResult result = processExecutor.execute();
+        if (result.getThrowable().isPresent()) {
+            throw new SigningException("While trying to run jarsigner", result.getThrowable().get());
         }
-
     }
 
     private void assertIsExecutableFile(final String path) {
